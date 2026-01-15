@@ -364,3 +364,71 @@ btnNo.addEventListener("click", () => {
   personas.value = 0;
   form.submit();
 });
+/* =====================
+   RSVP BLOQUEADO
+===================== */
+
+const RSVP_KEY = "rsvp_confirmed";
+
+const INVITADOS_MAX = 4;
+
+const form = document.querySelector('form[name="rsvp"]');
+const respuesta = document.getElementById("respuesta");
+const personas = document.getElementById("personas");
+
+const btnSi = document.getElementById("btn-si");
+const btnMenos = document.getElementById("btn-menos");
+const btnNo = document.getElementById("btn-no");
+
+const selectBox = document.getElementById("selectBox");
+const selectPersonas = document.getElementById("selectPersonas");
+const btnConfirmarMenor = document.getElementById("btn-confirmar-menor");
+
+const thanksMsg = document.getElementById("thanksMsg");
+const buttonsBox = document.querySelector(".rsvp-buttons");
+
+/* 🔒 YA CONFIRMÓ */
+if (localStorage.getItem(RSVP_KEY)) {
+  buttonsBox.style.display = "none";
+  selectBox.style.display = "none";
+  thanksMsg.style.display = "block";
+}
+
+/* SELECT */
+for (let i = 1; i < INVITADOS_MAX; i++) {
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = i;
+  selectPersonas.appendChild(option);
+}
+
+function lockAndSend(resp, qty) {
+  respuesta.value = resp;
+  personas.value = qty;
+
+  localStorage.setItem(RSVP_KEY, "true");
+
+  buttonsBox.style.display = "none";
+  selectBox.style.display = "none";
+  thanksMsg.style.display = "block";
+
+  setTimeout(() => form.submit(), 300);
+}
+
+/* BOTONES */
+btnSi.addEventListener("click", () => {
+  lockAndSend("Asistirá", INVITADOS_MAX);
+});
+
+btnMenos.addEventListener("click", () => {
+  selectBox.style.display = "block";
+});
+
+btnConfirmarMenor.addEventListener("click", () => {
+  lockAndSend("Asistirá con menos personas", selectPersonas.value);
+});
+
+btnNo.addEventListener("click", () => {
+  lockAndSend("No asistirá", 0);
+});
+
