@@ -660,3 +660,13 @@ body {
   display: none;
   margin-top: 2rem;
 }
+
+.rsvp-thanks {
+  display: none;
+  margin-top: 3rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  color: #7a8a3a;
+  letter-spacing: 0.15em;
+}
+
