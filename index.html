@@ -134,10 +134,33 @@
 </section>
 
 
+<section class="rsvp-section">
+  <h2>Confirma tu asistencia</h2>
+
+  <!-- FORM OCULTO NETLIFY -->
+  <form name="rsvp" method="POST" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="rsvp">
+    <input type="hidden" name="respuesta" id="respuesta">
+    <input type="hidden" name="personas" id="personas">
+  </form>
+
+  <!-- BOTONES -->
+  <div class="rsvp-buttons">
+    <button id="btn-si">Confirmar asistencia</button>
+    <button id="btn-menos">Asistiré con menos personas</button>
+    <button id="btn-no">No asistiré</button>
+  </div>
+
+  <!-- SELECT PERSONAS (OCULTO) -->
+  <div class="rsvp-select" id="selectBox">
+    <p>¿Cuántas personas asistirán?</p>
+    <select id="selectPersonas"></select>
+    <button id="btn-confirmar-menor">Confirmar</button>
+  </div>
+</section>
+
 
     <script src="main.js"></script>
 </body>
 
-
 </html>
-

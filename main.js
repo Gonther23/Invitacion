@@ -309,3 +309,58 @@ window.history.scrollRestoration = "manual";
 window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
+
+
+
+/* =====================
+   RSVP SIMPLE 3 BOTONES
+===================== */
+
+// 👇 AQUI DEFINES CUANTAS PERSONAS TIENE ESTA INVITACIÓN
+const INVITADOS_MAX = 4;
+
+const form = document.querySelector('form[name="rsvp"]');
+const respuesta = document.getElementById("respuesta");
+const personas = document.getElementById("personas");
+
+const btnSi = document.getElementById("btn-si");
+const btnMenos = document.getElementById("btn-menos");
+const btnNo = document.getElementById("btn-no");
+
+const selectBox = document.getElementById("selectBox");
+const selectPersonas = document.getElementById("selectPersonas");
+const btnConfirmarMenor = document.getElementById("btn-confirmar-menor");
+
+/* LLENAR SELECT AUTOMÁTICO */
+for (let i = 1; i < INVITADOS_MAX; i++) {
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = i;
+  selectPersonas.appendChild(option);
+}
+
+/* 1️⃣ SI ASISTE (TODOS) */
+btnSi.addEventListener("click", () => {
+  respuesta.value = "Asistirá";
+  personas.value = INVITADOS_MAX;
+  form.submit();
+});
+
+/* 2️⃣ MENOS PERSONAS */
+btnMenos.addEventListener("click", () => {
+  selectBox.style.display = "block";
+});
+
+/* CONFIRMAR MENOR */
+btnConfirmarMenor.addEventListener("click", () => {
+  respuesta.value = "Asistirá con menos personas";
+  personas.value = selectPersonas.value;
+  form.submit();
+});
+
+/* 3️⃣ NO ASISTE */
+btnNo.addEventListener("click", () => {
+  respuesta.value = "No asistirá";
+  personas.value = 0;
+  form.submit();
+});
