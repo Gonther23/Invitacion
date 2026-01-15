@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mis XV Años</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="flower flower-left"></div>
+        <div class="flower flower-right"></div>
+
+        <div class="hero-text">
+            <h1>Desliza para abrir</h1>
+
+            <img src="/assets/hand.png" alt="">
+        </div>
+    </section>
+    <section class="photo-section">
+        <img src="assets/foto1.jpg" alt="Foto panorámica" class="photo-bg">
+
+        <div class="photo-overlay">
+            <h2>XV Años</h2>
+            <h3>Natalia M RR</h3>
+
+            <div class="photo-meta">
+                <span>11 / 04 / 2026</span>
+                <span>09:40 am</span>
+            </div>
+        </div>
+    </section>
+
+    <!--Timer -->
+    <section class="countdown-section">
+        <h2>Faltan</h2>
+
+        <div class="countdown">
+            <div class="time-box">
+                <span id="days">00</span>
+                <small>Días</small>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <small>Horas</small>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <small>Minutos</small>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <small>Segundos</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="parents-section">
+        <div class="parents-container">
+            <h2>Con amor, tus padres</h2>
+
+            <p class="parents-text">
+                Hoy celebramos no solo tus XV años, sino cada paso, cada sonrisa y cada
+                sueño que has construido. Nos llena de orgullo verte crecer y convertirte
+                en la persona maravillosa que eres.
+            </p>
+
+            <p class="parents-text">
+                Que este día esté lleno de alegría, amor y bendiciones, y que siempre
+                recuerdes que estaremos a tu lado en cada momento de tu vida.
+            </p>
+
+            <div class="parents-sign">
+                <span>Con todo nuestro amor</span>
+                <strong>Mamá y Papá</strong>
+            </div>
+        </div>
+    </section>
+    <section class="gallery-section">
+        <h2>Momentos</h2>
+
+        <div class="stack-gallery">
+            <img src="assets/foto2.jpg" class="stack-img active">
+            <img src="assets/foto3.jpg" class="stack-img">
+            <img src="assets/foto4.jpg" class="stack-img">
+            <img src="assets/foto3.jpg" class="stack-img">
+            <img src="assets/foto4.jpg" class="stack-img">
+            <img src="assets/foto3.jpg" class="stack-img">
+            <img src="assets/foto4.jpg" class="stack-img">
+
+        </div>
+    </section>
+
+<section class="location-section">
+  <h2>Ubicación</h2>
+
+  <div class="location-card">
+    <div class="map-container">
+      <!-- Google Maps Embed -->
+      <iframe
+        src="https://www.google.com/maps?q=17.865524954744586, -92.9316144738265&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <div class="location-info">
+      <h3>Culto de Accion de Gracias</h3>
+      <p>INP Jesus El Pan de Vida</p>
+      <span>Direccion #--------</span>
+
+      <a
+        href="https://www.google.com/maps?q=17.865524954744586, -92.9316144738265"
+        target="_blank"
+        class="map-btn"
+      >
+        Abrir en Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
