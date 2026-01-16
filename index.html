@@ -25,6 +25,7 @@
 
 <body>
 
+
     <!-- HERO -->
     <section class="hero">
         <div class="flower flower-left"></div>
@@ -32,21 +33,34 @@
 
         <div class="hero-text">
             <h1>Desliza para abrir</h1>
-
-            <img src="/assets/hand.png" alt="">
+            <img src="assets/hand.png" alt="">
         </div>
     </section>
-    <section class="photo-section">
-        <img src="assets/foto1.jpg" alt="Foto panorámica" class="photo-bg">
 
-        <div class="photo-overlay">
-            <h2>XV Años</h2>
-            <h3>Natalia M RR</h3>
+    <!-- SPOTIFY CARD -->
+    <section class="spotify-card">
+        <div class="spotify-cover">
+            <img src="assets/CaratulaSpoty.png" alt="Vestido XV">
+        </div>
 
-            <div class="photo-meta">
-                <span>11 / 04 / 2026</span>
-                <span>09:40 am</span>
+        <div class="spotify-info">
+            <h3>Vals XV Años</h3>
+            <p>Natalia M RR</p>
+        </div>
+
+        <div class="spotify-progress">
+            <span id="currentTime">0:00</span>
+            <div class="bar">
+                <div class="bar-fill" id="progressBar"></div>
             </div>
+            <span id="duration">0:00</span>
+        </div>
+
+
+        <div class="spotify-controls">
+            <button>⏮</button>
+            <button id="playBtn" class="play">▶</button>
+            <button>⏭</button>
         </div>
     </section>
 
@@ -95,20 +109,7 @@
             </div>
         </div>
     </section>
-    <section class="gallery-section">
-        <h2>Momentos</h2>
 
-        <div class="stack-gallery">
-            <img src="assets/foto2.jpg" class="stack-img active">
-            <img src="assets/foto3.jpg" class="stack-img">
-            <img src="assets/foto4.jpg" class="stack-img">
-            <img src="assets/foto3.jpg" class="stack-img">
-            <img src="assets/foto4.jpg" class="stack-img">
-            <img src="assets/foto3.jpg" class="stack-img">
-            <img src="assets/foto4.jpg" class="stack-img">
-
-        </div>
-    </section>
 
     <section class="location-section">
         <h2>Ubicación</h2>
@@ -180,11 +181,13 @@
             </div>
         </div>
     </section>
-
+    <audio id="bgMusic" preload="auto">
+        <source src="assets/music/La Valse de LAmour.mp3" type="audio/mp3">
+    </audio>
 
     <script src="main.js">
-        console.log(form);
     </script>
+
 </body>
 
 
