@@ -310,14 +310,39 @@ window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
 
-
-
 /* =====================
    RSVP SIMPLE 3 BOTONES
+   OPCIÓN 2 - FORMSPREE
 ===================== */
 
-// 👇 AQUI DEFINES CUANTAS PERSONAS TIENE ESTA INVITACIÓN
-const INVITADOS_MAX = 4;
+/* =====================
+   IDENTIFICADOR INVITADO
+===================== */
+
+const params = new URLSearchParams(window.location.search);
+const invitadoId = params.get("id");
+
+const invitadoInput = document.getElementById("invitado");
+
+if (!invitadoId) {
+  document.body.innerHTML = "<h2>Invitación no válida</h2>";
+  throw new Error("Invitado no definido");
+}
+
+invitadoInput.value = invitadoId;
+const storageKey = `rsvp_${invitadoId}`;
+
+/* =====================
+   CONFIGURACIÓN
+===================== */
+
+// 👇 CUPO MÁXIMO DE ESTA INVITACIÓN
+const paramsInv = new URLSearchParams(window.location.search);
+
+const INVITADOS_MAX = Number(params.get("max")) || 1;
+/* =====================
+   ELEMENTOS
+===================== */
 
 const form = document.querySelector('form[name="rsvp"]');
 const respuesta = document.getElementById("respuesta");
@@ -335,10 +360,19 @@ const buttonsContainer = document.querySelector(".rsvp-buttons");
 const thanksMsg = document.getElementById("thanksMsg");
 
 /* =====================
+   BLOQUEO SI YA RESPONDIÓ
+===================== */
+
+if (localStorage.getItem(storageKey)) {
+  buttonsContainer.style.display = "none";
+  thanksMsg.textContent = "Invitación enviada 💌";
+  thanksMsg.style.display = "block";
+}
+
+/* =====================
    INICIALIZACIÓN
 ===================== */
 
-/* LLENAR SELECT AUTOMÁTICO */
 selectPersonas.innerHTML = "";
 for (let i = 1; i < INVITADOS_MAX; i++) {
   const option = document.createElement("option");
@@ -351,16 +385,17 @@ for (let i = 1; i < INVITADOS_MAX; i++) {
    FUNCIONES
 ===================== */
 
-/* MOSTRAR MENSAJE FINAL */
 function mostrarGracias() {
+  thanksMsg.textContent = "Gracias, tu respuesta ha sido registrada 💚";
   buttonsContainer.style.display = "none";
   thanksMsg.style.display = "block";
 }
 
-/* ENVÍO CENTRALIZADO */
 function enviarRespuesta(textoRespuesta, cantidadPersonas) {
   respuesta.value = textoRespuesta;
   personas.value = cantidadPersonas;
+
+  localStorage.setItem(storageKey, "enviado");
 
   mostrarGracias();
   form.submit();
@@ -375,7 +410,7 @@ btnSi.addEventListener("click", () => {
   enviarRespuesta("Asistirá", INVITADOS_MAX);
 });
 
-/* 2️⃣ MENOS PERSONAS (TOGGLE) */
+/* 2️⃣ MENOS PERSONAS */
 btnMenos.addEventListener("click", () => {
   const abierto = selectBox.classList.toggle("show");
 
