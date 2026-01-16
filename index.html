@@ -104,73 +104,77 @@
         </div>
     </section>
 
-<section class="location-section">
-  <h2>Ubicación</h2>
+    <section class="location-section">
+        <h2>Ubicación</h2>
 
-  <div class="location-card">
-    <div class="map-container">
-      <!-- Google Maps Embed -->
-      <iframe
-        src="https://www.google.com/maps?q=17.865524954744586, -92.9316144738265&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
+        <div class="location-card">
+            <div class="map-container">
+                <!-- Google Maps Embed -->
+                <iframe src="https://www.google.com/maps?q=17.865524954744586, -92.9316144738265&output=embed"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
 
-    <div class="location-info">
-      <h3>Culto de Accion de Gracias</h3>
-      <p>INP Jesus El Pan de Vida</p>
-      <span>Direccion #--------</span>
+            <div class="location-info">
+                <h3>Culto de Accion de Gracias</h3>
+                <p>INP Jesus El Pan de Vida</p>
+                <span>Direccion #--------</span>
 
-      <a
-        href="https://www.google.com/maps?q=17.865524954744586, -92.9316144738265"
-        target="_blank"
-        class="map-btn"
-      >
-        Abrir en Google Maps
-      </a>
-    </div>
-  </div>
-</section>
+                <a href="https://www.google.com/maps?q=17.865524954744586, -92.9316144738265" target="_blank"
+                    class="map-btn">
+                    Abrir en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
 
 
-<section class="rsvp-section">
-  <h2>Confirma tu asistencia</h2>
+    <section class="rsvp-section">
+        <h2>Confirma tu asistencia</h2>
 
-  <div class="rsvp-card">
-    <!-- FORM OCULTO NETLIFY -->
-    <form name="rsvp" netlify method="POST" data-netlify="true" hidden>
-      <input type="hidden" name="form-name" value="rsvp">
-      <input type="hidden" name="respuesta" id="respuesta">
-      <input type="hidden" name="personas" id="personas">
-    </form>
+        <div class="rsvp-card">
+            <!-- FORM OCULTO NETLIFY -->
+            <!-- FORM OCULTO FORMSPREE -->
+            <form id="rsvpForm" name="rsvp" action="https://formspree.io/f/mykkkzjd" method="POST" hidden>
 
-    <div class="rsvp-buttons">
-      <button id="btn-si">Confirmar asistencia</button>
+                <input type="hidden" name="invitado" id="invitado">
+                <input type="hidden" name="respuesta" id="respuesta">
+                <input type="hidden" name="personas" id="personas">
+            </form>
 
-      <button id="btn-menos">Asistiré con menos personas</button>
+            <div class="rsvp-buttons">
+                <button id="btn-si" type="button">
+                    Confirmar asistencia
+                </button>
 
-      <!-- SELECT -->
-      <div class="rsvp-select" id="selectBox">
-        <p>¿Cuántas personas asistirán?</p>
-        <select id="selectPersonas"></select>
-        <button id="btn-confirmar-menor">Confirmar</button>
-      </div>
+                <button id="btn-menos" type="button">
+                    Asistiré con menos personas
+                </button>
 
-      <button id="btn-no">No asistiré</button>
+                <!-- SELECT -->
+                <div class="rsvp-select" id="selectBox">
+                    <p>¿Cuántas personas asistirán?</p>
+                    <select id="selectPersonas"></select>
+                    <button id="btn-confirmar-menor" type="button">
+                        Confirmar
+                    </button>
+                </div>
 
-      <p class="rsvp-thanks" id="thanksMsg">
-        Gracias, tu respuesta ha sido registrada 💚
-      </p>
-    </div>
-  </div>
-</section>
+                <button id="btn-no" type="button">
+                    No asistiré
+                </button>
 
+                <p class="rsvp-thanks" id="thanksMsg">
+                    Gracias, tu respuesta ha sido registrada 💚
+                </p>
+            </div>
+        </div>
+    </section>
 
-
-    <script src="main.js"></script>
+    
+    <script src="main.js">
+        console.log(form);
+    </script>
 </body>
 
 
 </html>
-

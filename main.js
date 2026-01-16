@@ -334,7 +334,12 @@ const btnConfirmarMenor = document.getElementById("btn-confirmar-menor");
 const buttonsContainer = document.querySelector(".rsvp-buttons");
 const thanksMsg = document.getElementById("thanksMsg");
 
+/* =====================
+   INICIALIZACIÓN
+===================== */
+
 /* LLENAR SELECT AUTOMÁTICO */
+selectPersonas.innerHTML = "";
 for (let i = 1; i < INVITADOS_MAX; i++) {
   const option = document.createElement("option");
   option.value = i;
@@ -342,18 +347,32 @@ for (let i = 1; i < INVITADOS_MAX; i++) {
   selectPersonas.appendChild(option);
 }
 
+/* =====================
+   FUNCIONES
+===================== */
+
 /* MOSTRAR MENSAJE FINAL */
 function mostrarGracias() {
   buttonsContainer.style.display = "none";
   thanksMsg.style.display = "block";
 }
 
-/* 1️⃣ SI ASISTE */
-btnSi.addEventListener("click", () => {
-  respuesta.value = "Asistirá";
-  personas.value = INVITADOS_MAX;
+/* ENVÍO CENTRALIZADO */
+function enviarRespuesta(textoRespuesta, cantidadPersonas) {
+  respuesta.value = textoRespuesta;
+  personas.value = cantidadPersonas;
+
   mostrarGracias();
   form.submit();
+}
+
+/* =====================
+   EVENTOS
+===================== */
+
+/* 1️⃣ SI ASISTE */
+btnSi.addEventListener("click", () => {
+  enviarRespuesta("Asistirá", INVITADOS_MAX);
 });
 
 /* 2️⃣ MENOS PERSONAS (TOGGLE) */
@@ -365,22 +384,18 @@ btnMenos.addEventListener("click", () => {
     ? "Cancelar selección"
     : "Asistiré con menos personas";
 
-  // Oculta / muestra los otros botones
   buttonsContainer.classList.toggle("hide-others", abierto);
 });
 
 /* CONFIRMAR MENOR */
 btnConfirmarMenor.addEventListener("click", () => {
-  respuesta.value = "Asistirá con menos personas";
-  personas.value = selectPersonas.value;
-  mostrarGracias();
-  form.submit();
+  enviarRespuesta(
+    "Asistirá con menos personas",
+    selectPersonas.value
+  );
 });
 
 /* 3️⃣ NO ASISTE */
 btnNo.addEventListener("click", () => {
-  respuesta.value = "No asistirá";
-  personas.value = 0;
-  mostrarGracias();
-  form.submit();
+  enviarRespuesta("No asistirá", 0);
 });
