@@ -331,6 +331,9 @@ const selectBox = document.getElementById("selectBox");
 const selectPersonas = document.getElementById("selectPersonas");
 const btnConfirmarMenor = document.getElementById("btn-confirmar-menor");
 
+const buttonsContainer = document.querySelector(".rsvp-buttons");
+const thanksMsg = document.getElementById("thanksMsg");
+
 /* LLENAR SELECT AUTOMÁTICO */
 for (let i = 1; i < INVITADOS_MAX; i++) {
   const option = document.createElement("option");
@@ -339,22 +342,38 @@ for (let i = 1; i < INVITADOS_MAX; i++) {
   selectPersonas.appendChild(option);
 }
 
-/* 1️⃣ SI ASISTE (TODOS) */
+/* MOSTRAR MENSAJE FINAL */
+function mostrarGracias() {
+  buttonsContainer.style.display = "none";
+  thanksMsg.style.display = "block";
+}
+
+/* 1️⃣ SI ASISTE */
 btnSi.addEventListener("click", () => {
   respuesta.value = "Asistirá";
   personas.value = INVITADOS_MAX;
+  mostrarGracias();
   form.submit();
 });
 
-/* 2️⃣ MENOS PERSONAS */
+/* 2️⃣ MENOS PERSONAS (TOGGLE) */
 btnMenos.addEventListener("click", () => {
-  selectBox.style.display = "block";
+  const abierto = selectBox.classList.toggle("show");
+
+  btnMenos.classList.toggle("active", abierto);
+  btnMenos.textContent = abierto
+    ? "Cancelar selección"
+    : "Asistiré con menos personas";
+
+  // Oculta / muestra los otros botones
+  buttonsContainer.classList.toggle("hide-others", abierto);
 });
 
 /* CONFIRMAR MENOR */
 btnConfirmarMenor.addEventListener("click", () => {
   respuesta.value = "Asistirá con menos personas";
   personas.value = selectPersonas.value;
+  mostrarGracias();
   form.submit();
 });
 
@@ -362,6 +381,6 @@ btnConfirmarMenor.addEventListener("click", () => {
 btnNo.addEventListener("click", () => {
   respuesta.value = "No asistirá";
   personas.value = 0;
+  mostrarGracias();
   form.submit();
 });
-
