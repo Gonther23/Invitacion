@@ -1,0 +1,8 @@
+La invitacion ya esta creada 
+--- Al inttentar entrar directo al html genera un error porque establoqueado para crear invitaciones personalizadas usando el siguiente url
+/index.html?id=idPersonalizado&max=InvitadosMax&v=2
+
+
+En teoria no es la version final 
+
+Y creo que se deberia cambiar el alojamiento 
