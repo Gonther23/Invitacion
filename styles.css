@@ -792,3 +792,19 @@ potify caratula */
     font-size: 1.7rem;
   }
 }
+
+
+
+
+
+
+.spotify-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.spotify-controls img {
+  width: 25px;
+  height: 25px;
+}

@@ -188,14 +188,17 @@ music.volume = 0.6;
 /* =====================
    PLAY / PAUSE MANUAL
 ===================== */
+const playIcon = document.getElementById("playIcon");
+
 playBtn.addEventListener("click", () => {
   if (music.paused) {
     music.play();
-    playBtn.textContent = "⏸";
-    musicStarted = true;
+    playIcon.src = "assets/pausa.png";
+    playIcon.alt = "Pausa";
   } else {
     music.pause();
-    playBtn.textContent = "▶";
+    playIcon.src = "assets/boton-de-play.png";
+    playIcon.alt = "Play";
   }
 });
 
@@ -205,15 +208,18 @@ playBtn.addEventListener("click", () => {
 function startMusic() {
   if (musicStarted) return;
 
-  music.play().then(() => {
-    playBtn.textContent = "⏸";
-    musicStarted = true;
+  music
+    .play()
+    .then(() => {
+      playIcon.src = "assets/pausa.png";
+      musicStarted = true;
 
-    // eliminar listeners después de iniciar
-    window.removeEventListener("wheel", startMusic);
-    window.removeEventListener("touchstart", startMusic);
-    window.removeEventListener("keydown", startMusic);
-  }).catch(() => {});
+      // eliminar listeners después de iniciar
+      window.removeEventListener("wheel", startMusic);
+      window.removeEventListener("touchstart", startMusic);
+      window.removeEventListener("keydown", startMusic);
+    })
+    .catch(() => {});
 }
 
 // gestos válidos según navegadores
@@ -243,7 +249,7 @@ music.addEventListener("timeupdate", () => {
    FIN DE CANCIÓN
 ===================== */
 music.addEventListener("ended", () => {
-  playBtn.textContent = "▶";
+  playIcon.src = "assets/boton-de-play.png";
   progressBar.style.width = "0%";
   musicStarted = false;
 });
@@ -253,6 +259,8 @@ music.addEventListener("ended", () => {
 ===================== */
 function formatTime(seconds) {
   const min = Math.floor(seconds / 60);
-  const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
+  const sec = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, "0");
   return `${min}:${sec}`;
 }
