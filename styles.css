@@ -197,8 +197,8 @@ body {
    PALABRAS DE LOS PADRES
 ========================= */
 .parents-section {
-  min-height: 80vh;
-  padding: 6rem 1.5rem;
+  min-height: 60vh;
+  padding: 2rem 1.5rem;
 
   display: flex;
   justify-content: center;
@@ -231,7 +231,7 @@ body {
 /* TEXTO */
 .parents-text {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.8rem, 2.5vw, 1.8rem);
   line-height: 1.7;
   margin-bottom: 2rem;
 
@@ -655,3 +655,140 @@ potify caratula */
   justify-content: center;
 }
 
+.event-date {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #b58b8b;
+}
+
+.event-date .day {
+    font-size: 11rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    display: block;
+    line-height: 1;
+}
+
+.event-date .month {
+    font-size: 4.2rem;
+    font-family: 'Pacifico', cursive; /* manuscrita */
+    margin-top: -0.5rem;
+    display: block;
+}
+
+.event-date .year {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    margin-top: 0.2rem;
+    display: block;
+}
+
+.location-description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #6b6b6b;
+}
+
+/* =========================
+   DETALLES DEL EVENTO
+   (Vestimenta & Regalos)
+========================= */
+
+.details-section {
+  min-height: 100vh;
+  padding: 6rem 1.5rem;
+  background-color: #f1e0dd;
+  text-align: center;
+}
+
+.details-section h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 0.2em;
+  color: #7a8a3a;
+  margin-bottom: 4rem;
+}
+
+/* CONTENEDOR TARJETAS */
+.details-cards {
+  max-width: 900px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* TARJETA */
+.detail-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* ICONO */
+.detail-card img {
+  width: 145px;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+/* TÍTULO */
+.detail-card h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #3d3d3d;
+  margin-bottom: 0.8rem;
+}
+
+/* TEXTO PRINCIPAL */
+.detail-card .highlight {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #7a8a3a;
+  margin-bottom: 1rem;
+}
+
+/* DESCRIPCIÓN */
+.detail-card .note {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* COLORES PROHIBIDOS */
+.color-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.color-dots span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .detail-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .detail-card h3 {
+    font-size: 1.7rem;
+  }
+}

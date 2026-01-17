@@ -50,7 +50,7 @@ window.addEventListener("scroll", () => {
 /* =========================
    COUNTDOWN TIMER
 ========================= */
-const targetDate = new Date("2026-04-11T09:40:00");
+const targetDate = new Date("2026-04-11T04:00:00");
 
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
