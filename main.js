@@ -99,11 +99,11 @@ const invitadoId = params.get("id");
 const INVITADOS_MAX = Number(params.get("max")) || 1;
 
 if (!invitadoId) {
-  document.body.innerHTML = "<h2>Invitación no válida</h2>";
-  throw new Error("Invitado no definido");
+  console.warn("Invitado no definido, usando invitado demo");
 }
 
 const storageKey = `rsvp_${invitadoId}`;
+const lockedMsg = document.getElementById("lockedMsg");
 
 const form = document.querySelector('form[name="rsvp"]');
 const invitadoInput = document.getElementById("invitado");
@@ -119,14 +119,22 @@ const btnConfirmarMenor = document.getElementById("btn-confirmar-menor");
 const buttonsContainer = document.querySelector(".rsvp-buttons");
 const thanksMsg = document.getElementById("thanksMsg");
 
-invitadoInput.value = invitadoId;
+invitadoInput.value = invitadoId || "Invitado demo";
 
 /* BLOQUEO SI YA RESPONDIÓ */
 if (localStorage.getItem(storageKey)) {
-  buttonsContainer.style.display = "none";
-  thanksMsg.textContent = "Invitación enviada 💌";
-  thanksMsg.style.display = "block";
+  if (buttonsContainer) {
+    buttonsContainer.style.display = "none";
+  }
+
+  if (lockedMsg) {
+    lockedMsg.style.display = "block";
+    lockedMsg.style.opacity = "1";
+    lockedMsg.style.visibility = "visible";
+  }
 }
+
+localStorage.getItem(storageKey)
 
 /* SELECT PERSONAS */
 selectPersonas.innerHTML = "";
@@ -138,9 +146,8 @@ for (let i = 1; i < INVITADOS_MAX; i++) {
 }
 
 function mostrarGracias() {
-  thanksMsg.textContent = "Gracias, tu respuesta ha sido registrada 💚";
-  buttonsContainer.style.display = "none";
-  thanksMsg.style.display = "block";
+  if (buttonsContainer) buttonsContainer.style.display = "none";
+  if (thanksMsg) thanksMsg.style.display = "block";
 }
 
 function enviarRespuesta(texto, cantidad) {
